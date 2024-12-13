@@ -150,7 +150,6 @@ func main() {
 	err = EnviaNotificacao("gigolow alert", "Starting job processing")
 	if err != nil {
 		fmt.Printf("Erro ao enviar notificação: %v\n", err)
-		return
 	}
 	logger.Log("Starting job processing")
 	results := cli.RunJobs(config, logger)
