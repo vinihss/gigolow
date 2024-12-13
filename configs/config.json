@@ -1,0 +1,7 @@
+{
+  "Repository": [
+    {
+      "Url": "git@git-dev.inphonex.com:ringbyname/api-library.git",
+      "Branch": "php8-migration"
+    }]
+}
