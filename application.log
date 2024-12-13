@@ -1,0 +1,4 @@
+Starting job processing
+Starting to process repository: git@git-dev.inphonex.com:ringbyname/api-library.git
+Processing repository: git@git-dev.inphonex.com:ringbyname/api-library.git
+Executing git clone command: git clone git@git-dev.inphonex.com:ringbyname/api-library.git -b php8-migration

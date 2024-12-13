@@ -1,0 +1,185 @@
+package main
+
+import (
+	"fmt"
+	"os"
+
+	"github.com/spf13/cobra"
+)
+
+func main() {
+	cmd := NewRootCmd()
+	if err := cmd.Execute(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+
+// NewRootCmd creates the root command for the CLI
+func NewRootCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "shipx",
+		Short: "ShipX - Remote Server Management CLI",
+		Long:  `ShipX is a CLI tool designed for managing remote servers, executing tasks, and analyzing server logs.`,
+	}
+
+	cmd.AddCommand(NewServerCmd(), NewNetworkCmd(), NewLogCmd())
+	return cmd
+}
+
+// NewServerCmd creates the server management command
+func NewServerCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "server",
+		Short: "Manage servers (CRUD operations)",
+	}
+
+	cmd.AddCommand(
+		NewCreateServerCmd(),
+		NewUpdateServerCmd(),
+		NewDeleteServerCmd(),
+		NewListServersCmd(),
+		NewGetServerCmd(),
+	)
+	return cmd
+}
+
+func NewCreateServerCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "create",
+		Short: "Create a new server",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("Server created")
+			return nil
+		},
+	}
+}
+
+func NewUpdateServerCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "update",
+		Short: "Update server details",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("Server updated")
+			return nil
+		},
+	}
+}
+
+func NewDeleteServerCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "delete",
+		Short: "Delete a server",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("Server deleted")
+			return nil
+		},
+	}
+}
+
+func NewListServersCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "list",
+		Short: "List all servers",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("List of servers")
+			return nil
+		},
+	}
+}
+
+func NewGetServerCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "get",
+		Short: "Get details of a specific server",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("Server details")
+			return nil
+		},
+	}
+}
+
+// NewNetworkCmd creates the network management command
+func NewNetworkCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "network",
+		Short: "Manage network connections",
+	}
+
+	cmd.AddCommand(
+		NewCreateNetworkCmd(),
+		NewUpdateNetworkCmd(),
+		NewDeleteNetworkCmd(),
+		NewListNetworksCmd(),
+		NewStatusCmd(),
+	)
+	return cmd
+}
+
+func NewCreateNetworkCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "create",
+		Short: "Create a new network connection",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("Network created")
+			return nil
+		},
+	}
+}
+
+func NewUpdateNetworkCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "update",
+		Short: "Update a network connection",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("Network updated")
+			return nil
+		},
+	}
+}
+
+func NewDeleteNetworkCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "delete",
+		Short: "Delete a network connection",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("Network deleted")
+			return nil
+		},
+	}
+}
+
+func NewListNetworksCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "list",
+		Short: "List all network connections",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("List of networks")
+			return nil
+		},
+	}
+}
+
+func NewStatusCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "status",
+		Short: "Get status of network connections",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("Network status")
+			return nil
+		},
+	}
+}
+
+// NewLogCmd creates the log management command
+func NewLogCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "logs",
+		Short: "Follow and analyze server logs",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("Following logs")
+			return nil
+		},
+	}
+}
+
